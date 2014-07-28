@@ -10,7 +10,7 @@ import android.view.View.*;
 public class MainActivity extends Activity
 {
 	Button btn;
-    ImageView img;
+	ImageView img;
 	AnimationDrawable frames;
 
     @Override
@@ -23,6 +23,14 @@ public class MainActivity extends Activity
 		img.setBackgroundResource(R.drawable.android_anim);
 
 		frames = (AnimationDrawable) img.getBackground();
+		// ну, а если программно назначать фреймы:
+		// AnimationDrawable frames = new AnimationDrawable();
+		//
+		// и для каждого фрейма нужно написать такой код:
+		// BitmapDrawable frame1 = (BitmapDrawable) getResourses()
+		//     getDrawable(R.drawable.frame1);
+		//
+		//frames.addFrame(frame1, 100);
 
 		btn = (Button)findViewById(R.id.btn);
 		
