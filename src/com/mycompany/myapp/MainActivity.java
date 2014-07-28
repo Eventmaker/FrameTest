@@ -4,14 +4,60 @@ import android.app.*;
 import android.os.*;
 import android.view.*;
 import android.widget.*;
+import android.graphics.drawable.*;
+import android.view.View.*;
 
 public class MainActivity extends Activity
 {
-    /** Called when the activity is first created. */
+	Button btn;
+    ImageView img;
+	AnimationDrawable frames;
+
     @Override
     public void onCreate(Bundle savedInstanceState)
 	{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+		img = (ImageView) findViewById(R.id.anim_view);
+		img.setBackgroundResource(R.drawable.android_anim);
+
+		frames = (AnimationDrawable) img.getBackground();
+
+		btn = (Button)findViewById(R.id.btn);
+		
     }
+
+	public void onStartBtn(View v)
+	{
+		if (frames.isRunning())
+		{
+			frames.stop();
+			btn.setText("Start");
+		}
+		else
+		{
+			frames.start();
+			btn.setText("Stop");
+		}
+	}
+
+
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus)
+	{
+		if (frames.isRunning())
+		{
+			frames.stop();
+		}
+		else
+		{
+			frames.start();
+		}
+		super.onWindowFocusChanged(hasFocus);
+	}
+	
+	
+	
+	
 }
